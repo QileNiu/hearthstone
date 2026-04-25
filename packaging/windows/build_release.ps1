@@ -99,39 +99,36 @@ try {
     )
 
     Set-Content -Encoding UTF8 -Path (Join-Path $ReleaseRoot "sample-commands.txt") -Value @(
-        '选择卡组 法师'
-        '开始游戏'
-        '出牌 1 目标 对方英雄'
-        '打脸 1'
-        '结束回合'
+        'help'
+        'exit'
     )
 
     Set-Content -Encoding UTF8 -Path (Join-Path $ReleaseRoot "README_RELEASE.txt") -Value @(
-        'Hearthstone Text Control Windows 图形界面版'
+        'Hearthstone Text Control Windows GUI'
         ''
-        '最终用户要求：'
+        'Final user requirements:'
         '- Windows'
-        '- 不需要安装 Python'
-        '- 不需要安装 pip'
-        '- 不需要安装 pyautogui'
-        '- 不需要打开 PowerShell'
+        '- No Python installation required'
+        '- No pip installation required'
+        '- No pyautogui installation required'
+        '- No PowerShell usage required'
         ''
-        '文件说明：'
-        '- HearthstoneTextControl.exe：图形界面主程序'
-        '- profile.json：可编辑的坐标配置文件'
-        '- run-dry-run.cmd：以安全 dry-run 模式打开图形界面'
-        '- run-live.cmd：以 live 鼠标控制模式打开图形界面'
-        '- sample-commands.txt：示例文字命令'
+        'Files:'
+        '- HearthstoneTextControl.exe: GUI application'
+        '- profile.json: editable coordinate profile'
+        '- run-dry-run.cmd: open GUI in dry-run mode'
+        '- run-live.cmd: open GUI in live mouse-control mode'
+        '- sample-commands.txt: sample text commands'
         ''
-        '推荐使用：'
-        '1. 打开炉石传说，并保持窗口位置固定。'
-        '2. 从桌面或开始菜单打开 Hearthstone Text Control。'
-        '3. 先不要勾选 live 模式，用 dry-run 日志确认命令。'
-        '4. 根据屏幕校准 profile.json 坐标。'
-        '5. 坐标正确后，在图形界面里勾选 live 模式。'
+        'Recommended use:'
+        '1. Open Hearthstone and keep the window position fixed.'
+        '2. Open Hearthstone Text Control from the desktop or Start menu.'
+        '3. First use dry-run mode to confirm command output.'
+        '4. Calibrate coordinates in profile.json for the target screen.'
+        '5. Enable live mode in the GUI only after coordinates are correct.'
         ''
-        '紧急停止：'
-        '把鼠标移动到屏幕角落，触发 pyautogui fail-safe。'
+        'Emergency stop:'
+        'Move the mouse to a screen corner to trigger the pyautogui fail-safe.'
     )
 
     $ZipPath = Join-Path $Root "release\HearthstoneTextControl.zip"
@@ -147,7 +144,8 @@ try {
 
         New-Item -ItemType Directory -Force -Path $InstallerPackageRoot | Out-Null
         Copy-Item $SetupPath (Join-Path $InstallerPackageRoot "Setup.exe")
-        Copy-Item (Join-Path $Root "WINDOWS_INSTALL.md") (Join-Path $InstallerPackageRoot "使用说明.md")
+        $InstructionsName = ([string][char]0x4F7F) + ([string][char]0x7528) + ([string][char]0x8BF4) + ([string][char]0x660E) + ".md"
+        Copy-Item (Join-Path $Root "WINDOWS_INSTALL.md") (Join-Path $InstallerPackageRoot $InstructionsName)
         Compress-Archive -Path (Join-Path $InstallerPackageRoot "*") -DestinationPath $InstallerPackageZip
     }
 
