@@ -81,7 +81,7 @@ try {
         --distpath $DistRoot `
         --workpath $WorkRoot `
         --specpath $SpecRoot `
-        (Join-Path $Root "src\hearthstone_text_control\gui.py")
+        (Join-Path $Root "packaging\windows\gui_entry.py")
 
     Copy-Item (Join-Path $DistRoot "HearthstoneTextControl.exe") $ReleaseRoot
     Copy-Item (Join-Path $Root "config\example_profile.json") (Join-Path $ReleaseRoot "profile.json")
