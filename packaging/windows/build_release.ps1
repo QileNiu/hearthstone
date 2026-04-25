@@ -86,53 +86,53 @@ try {
     Copy-Item (Join-Path $DistRoot "HearthstoneTextControl.exe") $ReleaseRoot
     Copy-Item (Join-Path $Root "config\example_profile.json") (Join-Path $ReleaseRoot "profile.json")
 
-    Set-Content -Encoding UTF8 -Path (Join-Path $ReleaseRoot "run-dry-run.cmd") -Value @"
-@echo off
-cd /d "%~dp0"
-HearthstoneTextControl.exe --profile "%~dp0profile.json"
-"@
+    Set-Content -Encoding UTF8 -Path (Join-Path $ReleaseRoot "run-dry-run.cmd") -Value @(
+        '@echo off'
+        'cd /d "%~dp0"'
+        'HearthstoneTextControl.exe --profile "%~dp0profile.json"'
+    )
 
-    Set-Content -Encoding UTF8 -Path (Join-Path $ReleaseRoot "run-live.cmd") -Value @"
-@echo off
-cd /d "%~dp0"
-HearthstoneTextControl.exe --profile "%~dp0profile.json" --live
-"@
+    Set-Content -Encoding UTF8 -Path (Join-Path $ReleaseRoot "run-live.cmd") -Value @(
+        '@echo off'
+        'cd /d "%~dp0"'
+        'HearthstoneTextControl.exe --profile "%~dp0profile.json" --live'
+    )
 
-    Set-Content -Encoding UTF8 -Path (Join-Path $ReleaseRoot "sample-commands.txt") -Value @"
-选择卡组 法师
-开始游戏
-出牌 1 目标 对方英雄
-打脸 1
-结束回合
-"@
+    Set-Content -Encoding UTF8 -Path (Join-Path $ReleaseRoot "sample-commands.txt") -Value @(
+        '选择卡组 法师'
+        '开始游戏'
+        '出牌 1 目标 对方英雄'
+        '打脸 1'
+        '结束回合'
+    )
 
-    Set-Content -Encoding UTF8 -Path (Join-Path $ReleaseRoot "README_RELEASE.txt") -Value @"
-Hearthstone Text Control Windows 图形界面版
-
-最终用户要求：
-- Windows
-- 不需要安装 Python
-- 不需要安装 pip
-- 不需要安装 pyautogui
-- 不需要打开 PowerShell
-
-文件说明：
-- HearthstoneTextControl.exe：图形界面主程序
-- profile.json：可编辑的坐标配置文件
-- run-dry-run.cmd：以安全 dry-run 模式打开图形界面
-- run-live.cmd：以 live 鼠标控制模式打开图形界面
-- sample-commands.txt：示例文字命令
-
-推荐使用：
-1. 打开炉石传说，并保持窗口位置固定。
-2. 从桌面或开始菜单打开 Hearthstone Text Control。
-3. 先不要勾选 live 模式，用 dry-run 日志确认命令。
-4. 根据屏幕校准 profile.json 坐标。
-5. 坐标正确后，在图形界面里勾选 live 模式。
-
-紧急停止：
-把鼠标移动到屏幕角落，触发 pyautogui fail-safe。
-"@
+    Set-Content -Encoding UTF8 -Path (Join-Path $ReleaseRoot "README_RELEASE.txt") -Value @(
+        'Hearthstone Text Control Windows 图形界面版'
+        ''
+        '最终用户要求：'
+        '- Windows'
+        '- 不需要安装 Python'
+        '- 不需要安装 pip'
+        '- 不需要安装 pyautogui'
+        '- 不需要打开 PowerShell'
+        ''
+        '文件说明：'
+        '- HearthstoneTextControl.exe：图形界面主程序'
+        '- profile.json：可编辑的坐标配置文件'
+        '- run-dry-run.cmd：以安全 dry-run 模式打开图形界面'
+        '- run-live.cmd：以 live 鼠标控制模式打开图形界面'
+        '- sample-commands.txt：示例文字命令'
+        ''
+        '推荐使用：'
+        '1. 打开炉石传说，并保持窗口位置固定。'
+        '2. 从桌面或开始菜单打开 Hearthstone Text Control。'
+        '3. 先不要勾选 live 模式，用 dry-run 日志确认命令。'
+        '4. 根据屏幕校准 profile.json 坐标。'
+        '5. 坐标正确后，在图形界面里勾选 live 模式。'
+        ''
+        '紧急停止：'
+        '把鼠标移动到屏幕角落，触发 pyautogui fail-safe。'
+    )
 
     $ZipPath = Join-Path $Root "release\HearthstoneTextControl.zip"
     Remove-Item -Force $ZipPath -ErrorAction SilentlyContinue
