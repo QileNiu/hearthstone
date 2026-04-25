@@ -1,0 +1,53 @@
+{
+  "name": "example-1920x1080",
+  "description": "Placeholder coordinates for a 1920x1080 Hearthstone layout. Calibrate before live use.",
+  "wait_after_action_seconds": 0.15,
+  "points": {
+    "play_button": [960, 860],
+    "confirm_button": [960, 760],
+    "end_turn": [1575, 520],
+    "enemy_hero": [960, 185],
+    "friendly_hero": [960, 795],
+    "hero_power": [1110, 790]
+  },
+  "decks": {
+    "法师": [530, 360],
+    "猎人": [530, 470],
+    "战士": [530, 580]
+  },
+  "hand_slots": {
+    "1": [650, 930],
+    "2": [760, 930],
+    "3": [870, 930],
+    "4": [980, 930],
+    "5": [1090, 930],
+    "6": [1200, 930],
+    "7": [1310, 930],
+    "8": [1420, 930],
+    "9": [1530, 930],
+    "10": [1640, 930]
+  },
+  "board_slots": {
+    "1": [690, 575],
+    "2": [810, 575],
+    "3": [930, 575],
+    "4": [1050, 575],
+    "5": [1170, 575],
+    "6": [1290, 575],
+    "7": [1410, 575]
+  },
+  "aliases": {
+    "开始": "play_button",
+    "开始游戏": "play_button",
+    "确认": "confirm_button",
+    "结束": "end_turn",
+    "结束回合": "end_turn",
+    "脸": "enemy_hero",
+    "打脸": "enemy_hero",
+    "对方英雄": "enemy_hero",
+    "敌方英雄": "enemy_hero",
+    "自己": "friendly_hero",
+    "我方英雄": "friendly_hero",
+    "英雄技能": "hero_power"
+  }
+}
